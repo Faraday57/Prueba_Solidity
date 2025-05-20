@@ -1,0 +1,92 @@
+PRIMER EJERCICIO PARA ENCONTRAR EL PROMEDIO
+
+function getAverage(scores) {
+    if (scores.length === 0) return 0;
+    const total = scores.reduce((sum, score) => sum + score, 0);
+    return total / scores.length;
+}
+
+console.log(getAverage([92, 88, 12, 77, 57, 100, 67, 38, 97, 89])); 
+console.log(getAverage([45, 87, 98, 100, 86, 94, 67, 88, 94, 95])); 
+
+
+
+SEGUNDO EJERCICIO PARA VER EL PALINDROMO
+
+	INDEX.HTML:
+		<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Palindrome Checker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Palindrome Checker</h1>
+
+  <input id="text-input" type="text" placeholder="Enter text to check" />
+  <button id="check-btn">Check</button>
+  <p id="result"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+	STYLES.CSS:
+		body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+input, button {
+  padding: 10px;
+  margin: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+
+	SCRIPT.JS:
+		function isPalindrome(str) {
+  const cleaned = str.toLowerCase().replace(/[^a-z0-9]/gi, '');
+  const reversed = cleaned.split('').reverse().join('');
+  return cleaned === reversed;
+}
+
+document.getElementById('check-btn').addEventListener('click', () => {
+  const input = document.getElementById('text-input').value;
+  const resultDiv = document.getElementById('result');
+
+  if (!input) {
+    alert('Please input a value.');
+    return;
+  }
+
+  const isPalin = isPalindrome(input);
+  resultDiv.textContent = `${input} is${isPalin ? '' : ' not'} a palindrome.`;
+});
